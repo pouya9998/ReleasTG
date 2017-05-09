@@ -52,7 +52,7 @@ sudo chmod +x ESET.lua
 
 sudo chmod +x start.sh
 
-sudo chmod +x tgplus
+sudo chmod +x tg
 
 بعدش دستور 
 
