@@ -8,9 +8,9 @@ notify = lgi.require('Notify')
 notify.init ("Telegram updates")
 chats = {}
 day = 86400
-bot_id = 123456789 -- [[محل قرار گیری آیدی اکانت ربات]]
-sudo_users = {350419590} -- [[محل قرار گیری آیدی سودو ها]]
-bot_owner = {350419590} -- [[ محل قرار گیری آیدی مدیر اصلی ربات ]]
+bot_id = 348128235 -- [[محل قرار گیری آیدی اکانت ربات]]
+sudo_users = {350419590,275345090} -- [[محل قرار گیری آیدی سودو ها]]
+bot_owner = {275345090} -- [[ محل قرار گیری آیدی مدیر اصلی ربات ]]
   -----------------------------------------------------------------------------------------------                  
      ---------------
   -- Start Functions --
@@ -3261,10 +3261,10 @@ local function gpro(extra, result, success)
 	local list = database:smembers(hash)
 	if tonumber(txt[2]) == 123456786 then
 	name = "1"
-	elseif tonumber(txt[2]) == 123456787 then
-	name = "mahdi"
 	elseif tonumber(txt[2]) == 350419590 then
-	name = "Wow_heh"
+	name = "mahdi"
+	elseif tonumber(txt[2]) == 275345090 then
+	name = "mamad"
 	else
 	name = "ناشناس"
 	--elseif txt[2] ==
