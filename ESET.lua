@@ -8,9 +8,9 @@ notify = lgi.require('Notify')
 notify.init ("Telegram updates")
 chats = {}
 day = 86400
-bot_id = 348128235 -- [[محل قرار گیری آیدی اکانت ربات]]
-sudo_users = {350419590,275345090} -- [[محل قرار گیری آیدی سودو ها]]
-bot_owner = {275345090} -- [[ محل قرار گیری آیدی مدیر اصلی ربات ]]
+bot_id = 377481115 -- [[377481115]]
+sudo_users = {356602661,430222221} -- [[محل قرار گیری آیدی سودو ها]]
+bot_owner = 356602661,430222221 -- [[ محل قرار گیری آیدی مدیر اصلی ربات ]]
   -----------------------------------------------------------------------------------------------                  
      ---------------
   -- Start Functions --
@@ -432,7 +432,7 @@ function chat_del_user(chat_id, user_id)
 end
 -----------------------------------------------------------------------------------------------
 function getChannelMembers(channel_id, offset, filter, limit)
-  if not limit or limit > 200 then
+  if not limit or limit ® 200 then
     limit = 200
   end
   tdcli_function ({
@@ -700,7 +700,7 @@ function tdcli_update_callback(data)
       local hashsb = 'flood:'..msg.sender_user_id_..':'..msg.chat_id_..':msg-num'
 	  local bbc = database:get(hashsb)
       local msgs = tonumber(bbc) or tonumber(0)
-      if msgs > (floodMax - 1) then
+      if msgs ® (floodMax - 1) then
 	  if database:get('floodstatus'..msg.chat_id_) == 'Kicked' then
 	  chat_kick(msg.chat_id_, msg.sender_user_id_)
 	  del_all_msgs(msg.chat_id_, msg.sender_user_id_)
@@ -1516,7 +1516,7 @@ if database:get('bot:forward:mute'..msg.chat_id_) then
     else
         sens = tonumber(database:get(hash))
     end
-	if database:get('bot:spam:mute'..msg.chat_id_) and string.len(text) > (sens) or ctrl_chars > (sens) or real_digits > (sens) then
+	if database:get('bot:spam:mute'..msg.chat_id_) and string.len(text) ® (sens) or ctrl_chars ® (sens) or real_digits ® (sens) then
 	delete_msg(chat,msgs)
 	end
 	end
@@ -1540,9 +1540,18 @@ if database:get('bot:forward:mute'..msg.chat_id_) then
   else
     ------------------------------------ With Pattern -------------------------------------------
 	if text:match("^[Pp]ing$") then
-	   send(msg.chat_id_, msg.id_, 1, 'ربات هم اکنون آنلاین میباشد', 1, 'md')
+	   send(msg.chat_id_, msg.id_, 1, '`🔰رُبات هَمچّناטּ در حال مُدیریَت گُروہ مِیباشَد 🇮🇷`', 1, 'md')
 	end
 	-----------------------------------------------------------------------------------------------
+              if text:match("^[!/#]nerkh$") then
+              send(msg.chat_id_, msg.id_, 1, '💎قیمت ربات ضد لینک و اسپم رلیس :\n🔰یک ماهه  :5️⃣ هزار تومان\n🔰دو   ماهه  :8️⃣ هزار تومان\n🔰سه ماهه : 3️⃣1️⃣هزار تومان\n🔚دائمی :0️⃣2️⃣هزار تومان\n
+〰〰〰〰〰〰〰〰〰〰〰〰\n➰برای خرید به گپ پشتیبانی مراجعه کنید \n⚪️برای گرفتن لینک گپ پشتیبانی دستور زیر را وارد کنید/n/support', 1, 'md')
+        end
+        ----------------------------------------------------------------------------------------------- 
+          if text:match("^[!/#]support$") then
+              send(msg.chat_id_, msg.id_, 1, '🛡Releαѕ TG Verѕιoɴ 1\n🔎𝔖𝔲𝔭𝔭𝔬𝔯𝔱 𝔊𝔯𝔬𝔲𝔭 𝔩𝔦𝔫𝑘 :\nhttps://telegram.me/joinchat/AAAAAELyAks3kUbJtcpmmg\n💢Powered By DeleтeTeαм\n♨️Oυr Cнαɴɴel : @DeleteTeam', 1, 'md')         
+        end
+        ----------------------------------------------------------------------------------------------- 
 	if text:match("^[Ll]eave$") and is_admin(msg.sender_user_id_, msg.chat_id_) then
 	    chat_leave(msg.chat_id_, bot_id)
     end
@@ -2213,42 +2222,42 @@ local function gpro(extra, result, success)
 	local lockpt = {string.match(text, "^([Ll]ock) (.*)$")} 
       if lockpt[2] == "edit" then
 	  if not database:get('editmsg'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل ویرایش پیام #فعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل ویرایش پیام فعال شد ! ', 1, 'md')
          database:set('editmsg'..msg.chat_id_,'delmsg')
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل ویرایش پیام از قبل #فعال است ! ', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل ویرایش پیام از قبل فعال است ! ', 1, 'md')
 	  end
 	  end
 	  if lockpt[2] == "cmd" then
 	  if not database:get('bot:cmds'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> حالت عدم جواب #فعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® حالت عدم جواب فعال شد ! ', 1, 'md')
          database:set('bot:cmds'..msg.chat_id_,true)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> حالت عدم جواب از قبل #فعال است ! ', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® حالت عدم جواب از قبل فعال است ! ', 1, 'md')
       end
 	  end
 	  if lockpt[2] == "bots" then
 	  if not database:get('bot:bots:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل ورود ربات #فعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل ورود ربات فعال شد ! ', 1, 'md')
          database:set('bot:bots:mute'..msg.chat_id_,true)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل ورود ربات از قبل #فعال است ! ', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل ورود ربات از قبل فعال است ! ', 1, 'md')
       end
 	  end
 	  if lockpt[2] == "flood" then
 	  if not database:get('anti-flood:'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل فلود #فعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل فلود فعال شد ! ', 1, 'md')
          database:set('anti-flood:'..msg.chat_id_,true)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل فلود از قبل #فعال است ! ', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل فلود از قبل فعال است ! ', 1, 'md')
 	  end
 	  end
 	  if lockpt[2] == "pin" then
 	  if not database:get('bot:pin:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, "> قفل سنجاق پیام #فعال شد ! ", 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, "® قفل سنجاق پیام فعال شد ! ", 1, 'md')
 	     database:set('bot:pin:mute'..msg.chat_id_,true)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, "> قفل سنجاق پیام از قبل #فعال است ! ", 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, "® قفل سنجاق پیام از قبل فعال است ! ", 1, 'md')
       end
 	end
 	end
@@ -2277,25 +2286,25 @@ local function gpro(extra, result, success)
 	local status = {string.match(text, "^([Ss]etstatus) (.*)$")} 
       if status[2] == "kick" then
 	  if database:get('floodstatus'..msg.chat_id_) == "Kicked" then
-         send(msg.chat_id_, msg.id_, 1, '>وضعیت فلود از قبل بر روی حالت #اخراج میباشد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '®وضعیت فلود از قبل بر روی حالت اخراج میباشد ! ', 1, 'md')
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '>وضعیت فلود بر روی حالت #اخراج تنظیم شد ! ', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '®وضعیت فلود بر روی حالت اخراج تنظیم شد ! ', 1, 'md')
 		 
 		 database:set('floodstatus'..msg.chat_id_,'Kicked')
       end
 	  end
 	  if status[2] == "del" then
 	  if database:get('floodstatus'..msg.chat_id_) == "DelMsg" then
-         send(msg.chat_id_, msg.id_, 1, '>وضعیت فلود از قبل بر روی حالت #حذف پیام میباشد !  ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '®وضعیت فلود از قبل بر روی حالت حذف پیام میباشد !  ', 1, 'md')
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '>وضعیت فلود بر روی حالت #حذف پیام تنظیم شد ! ', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '®وضعیت فلود بر روی حالت حذف پیام تنظیم شد ! ', 1, 'md')
 		 database:set('floodstatus'..msg.chat_id_,'DelMsg')
       end
 	  end
 	  end
 	-----------------------------------------------------------------------------------------------
 	if text:match("^[Ss]how edit$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '⭕️نمایش پیام های ادیت شده #فعال شد !', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '⭕️نمایش پیام های ادیت شده فعال شد !', 1, 'md')
          database:set('editmsg'..msg.chat_id_,'didam')
 	end
 	-----------------------------------------------------------------------------------------------
@@ -2376,7 +2385,7 @@ local function gpro(extra, result, success)
          local names = database:hkeys(hash)
          local text = '📋 لیست کلمات فیلتر شده : \n\n'
     for i=1, #names do
-      text = text..'> *'..names[i]..'*\n'
+      text = text..'® *'..names[i]..'*\n'
     end
 	if #names == 0 then
        text = "📋 لیست کلمات فیلتر شده خالی است !"
@@ -2411,42 +2420,42 @@ local function gpro(extra, result, success)
 	local unlockpt = {string.match(text, "^([Uu]nlock) (.*)$")} 
       if unlockpt[2] == "edit" then
 	  if database:get('editmsg'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل ویرایش پیام #غیرفعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل ویرایش پیام غیرفعال شد ! ', 1, 'md')
          database:del('editmsg'..msg.chat_id_)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل ویرایش پیام از قبل #غیرفعال است ! ', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل ویرایش پیام از قبل غیرفعال است ! ', 1, 'md')
       end
 	  end
 	  if unlockpt[2] == "cmd" then
 	  if database:get('bot:cmds'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> حالت عدم جواب #غیرفعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® حالت عدم جواب غیرفعال شد ! ', 1, 'md')
          database:del('bot:cmds'..msg.chat_id_)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> حالت عدم جواب از قبل #غیرفعال است ! ', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® حالت عدم جواب از قبل غیرفعال است ! ', 1, 'md')
       end
 	  end
 	  if unlockpt[2] == "bots" then
 	  if database:get('bot:bots:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل ورود ربات #غیرفعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل ورود ربات غیرفعال شد ! ', 1, 'md')
          database:del('bot:bots:mute'..msg.chat_id_)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل ورود ربات از قبل #غیرفعال است ! ', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل ورود ربات از قبل غیرفعال است ! ', 1, 'md')
       end
 	  end
 	  if unlockpt[2] == "flood" then
 	  if database:get('anti-flood:'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل فلود #غیرفعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل فلود غیرفعال شد ! ', 1, 'md')
          database:del('anti-flood:'..msg.chat_id_)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل قلود از قبل #غیرفعال است ! ', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل قلود از قبل غیرفعال است ! ', 1, 'md')
 	  end
 	  end
 	  if unlockpt[2] == "pin" then
 	  if database:get('bot:pin:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, "> قفل سنجاق پیام #غیرفعال شد ! ", 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, "® قفل سنجاق پیام غیرفعال شد ! ", 1, 'md')
 	     database:del('bot:pin:mute'..msg.chat_id_)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, "> قفل سنجاق پیام از قبل #غیرفعال است ! ", 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, "® قفل سنجاق پیام از قبل غیرفعال است ! ", 1, 'md')
       end
     end
 	end
@@ -2457,185 +2466,185 @@ local function gpro(extra, result, success)
     local num1 = tonumber(hour) * 3600
 	local num = tonumber(num1)
 	database:setex('bot:muteall'..msg.chat_id_, num, true)
-    send(msg.chat_id_, msg.id_, 1, "> قفل گروه [ همه چیز ] به مدت "..mutept[1].." ساعت #فعال شد !", 'md')
+    send(msg.chat_id_, msg.id_, 1, "® قفل گروه [ همه چیز ] به مدت "..mutept[1].." ساعت فعال شد !", 'md')
 	end
 	-----------------------------------------------------------------------------------------------
   	if text:match("^[Ll]ock (.*)$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
 	local mutept = {string.match(text, "^([Ll]ock) (.*)$")} 
       if mutept[2] == "all" then
 	  if not database:get('bot:muteall'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل گروه [ همه چیز ] #فعال شد !', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل گروه [ همه چیز ] فعال شد !', 1, 'md')
          database:set('bot:muteall'..msg.chat_id_,true)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل گروه [ همه چیز ] از قبل #فعال است !', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل گروه [ همه چیز ] از قبل فعال است !', 1, 'md')
 		 end
       end
 	  if mutept[2] == "text" then
 	  if not database:get('bot:text:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل متن [ چت ] #فعال شد !', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل متن [ چت ] فعال شد !', 1, 'md')
          database:set('bot:text:mute'..msg.chat_id_,true)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل متن [ چت ] از قبل #فعال است !', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل متن [ چت ] از قبل فعال است !', 1, 'md')
       end
 	  end
 	  if mutept[2] == "inline" then
 	  if not database:get('bot:inline:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل دکمه شیشه ایی #فعال شد !', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل دکمه شیشه ایی فعال شد !', 1, 'md')
          database:set('bot:inline:mute'..msg.chat_id_,true)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل دکمه شیشه ایی از قبل #فعال است !', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل دکمه شیشه ایی از قبل فعال است !', 1, 'md')
       end
 	  end
 	  if mutept[2] == "photo" then
 	  if not database:get('bot:photo:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل عکس #فعال شد !', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل عکس فعال شد !', 1, 'md')
          database:set('bot:photo:mute'..msg.chat_id_,true)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل عکس از قبل #فعال است !', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل عکس از قبل فعال است !', 1, 'md')
       end
 	  end
 	  if mutept[2] == "spam" then
 	  if not database:get('bot:spam:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل اسپم #فعال شد !', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل اسپم فعال شد !', 1, 'md')
          database:set('bot:spam:mute'..msg.chat_id_,true)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل اسپم از قبل #فعال است !', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل اسپم از قبل فعال است !', 1, 'md')
       end
 	  end
 	  if mutept[2] == "video" then
 	  if not database:get('bot:video:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل فیلم #فعال شد !', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل فیلم فعال شد !', 1, 'md')
          database:set('bot:video:mute'..msg.chat_id_,true)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل فیلم از قبل #فعال است !', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل فیلم از قبل فعال است !', 1, 'md')
       end
 	  end
 	  if mutept[2] == "gif" then
 	  if not database:get('bot:gifs:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل گیف #فعال شد !', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل گیف فعال شد !', 1, 'md')
          database:set('bot:gifs:mute'..msg.chat_id_,true)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل گیف از قبل #فعال است !', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل گیف از قبل فعال است !', 1, 'md')
       end
 	  end
 	  if mutept[2] == "music" then
 	  if not database:get('bot:music:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل موزیک #فعال شد !', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل موزیک فعال شد !', 1, 'md')
          database:set('bot:music:mute'..msg.chat_id_,true)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل موزیک از قبل #فعال است !', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل موزیک از قبل فعال است !', 1, 'md')
       end
 	  end
 	  if mutept[2] == "voice" then
 	  if not database:get('bot:voice:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل ویس #فعال شد !', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل ویس فعال شد !', 1, 'md')
          database:set('bot:voice:mute'..msg.chat_id_,true)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل ویس از قبل #فعال است !', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل ویس از قبل فعال است !', 1, 'md')
       end
 	  end
 	  if mutept[2] == "links" then
 	  if not database:get('bot:links:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل لینک #فعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل لینک فعال شد ! ', 1, 'md')
          database:set('bot:links:mute'..msg.chat_id_,true)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل لینک از قبل #فعال است !', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل لینک از قبل فعال است !', 1, 'md')
       end
 	  end
 	  if mutept[2] == "location" then
 	  if not database:get('bot:location:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل موقعیت مکانی #فعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل موقعیت مکانی فعال شد ! ', 1, 'md')
          database:set('bot:location:mute'..msg.chat_id_,true)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل موقعیت مکانی از قبل #فعال است !', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل موقعیت مکانی از قبل فعال است !', 1, 'md')
       end
 	  end
 	  if mutept[2] == "tag" then
 	  if not database:get('tags:lock'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل تگ #فعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل تگ فعال شد ! ', 1, 'md')
          database:set('tags:lock'..msg.chat_id_,true)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل تگ از قبل #فعال است !', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل تگ از قبل فعال است !', 1, 'md')
       end
 	  end
 	  	if mutept[2] == "strict" then
 	  if not database:get('bot:strict'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> حالت [ سختگیرانه ] #فعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® حالت [ سختگیرانه ] فعال شد ! ', 1, 'md')
          database:set('bot:strict'..msg.chat_id_,true)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> حالت [ سختگیرانه ] از قبل #فعال است ! ', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® حالت [ سختگیرانه ] از قبل فعال است ! ', 1, 'md')
       end
 	  end
 	  if mutept[2] == "file" then
 	  if not database:get('bot:document:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل فایل #فعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل فایل فعال شد ! ', 1, 'md')
          database:set('bot:document:mute'..msg.chat_id_,true)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل فایل از قبل #فعال است !', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل فایل از قبل فعال است !', 1, 'md')
       end
 	  end
 	  if mutept[2] == "hashtag" then
 	  if not database:get('bot:hashtag:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل هشتگ #فعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل هشتگ فعال شد ! ', 1, 'md')
          database:set('bot:hashtag:mute'..msg.chat_id_,true)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل هشتگ از قبل #فعال است !', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل هشتگ از قبل فعال است !', 1, 'md')
       end
 	  end
 	  if mutept[2] == "contact" then
 	  if not database:get('bot:contact:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل ارسال مخاطب #فعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل ارسال مخاطب فعال شد ! ', 1, 'md')
          database:set('bot:contact:mute'..msg.chat_id_,true)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل ارسال مخاطب از قبل #فعال است !', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل ارسال مخاطب از قبل فعال است !', 1, 'md')
       end
 	  end
 	  if mutept[2] == "webpage" then
 	  if not database:get('bot:webpage:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل ارسال صفحه اینترنتی #فعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل ارسال صفحه اینترنتی فعال شد ! ', 1, 'md')
          database:set('bot:webpage:mute'..msg.chat_id_,true)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل ارسال صفحه اینترنتی از قبل #فعال است !', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل ارسال صفحه اینترنتی از قبل فعال است !', 1, 'md')
       end
 	  end
 	  if mutept[2] == "farsi" then
 	  if not database:get('bot:arabic:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل نوشتار فارسی #فعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل نوشتار فارسی فعال شد ! ', 1, 'md')
          database:set('bot:arabic:mute'..msg.chat_id_,true)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل نوشتار فارسی از قبل #فعال است !', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل نوشتار فارسی از قبل فعال است !', 1, 'md')
       end
 	  end
 	  if mutept[2] == "english" then
 	  if not database:get('bot:english:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل نوشتار انگلیسی #فعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل نوشتار انگلیسی فعال شد ! ', 1, 'md')
          database:set('bot:english:mute'..msg.chat_id_,true)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل نوشتار انگلیسی از قبل #فعال است !', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل نوشتار انگلیسی از قبل فعال است !', 1, 'md')
       end 
 	  end
 	  if mutept[2] == "sticker" then
 	  if not database:get('bot:sticker:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل استیکر #فعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل استیکر فعال شد ! ', 1, 'md')
          database:set('bot:sticker:mute'..msg.chat_id_,true)
 		 else
-		   send(msg.chat_id_, msg.id_, 1, '> قفل استیکر از قبل #فعال است !', 1, 'md')
+		   send(msg.chat_id_, msg.id_, 1, '® قفل استیکر از قبل فعال است !', 1, 'md')
       end 
 	  end
 	  if mutept[2] == "tgservice" then
 	  if not database:get('bot:tgservice:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل سرویس تلگرام #فعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل سرویس تلگرام فعال شد ! ', 1, 'md')
          database:set('bot:tgservice:mute'..msg.chat_id_,true)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل سرویس تلگرام از قبل #فعال است !', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل سرویس تلگرام از قبل فعال است !', 1, 'md')
       end
 	  end
 	  if mutept[2] == "fwd" then
 	  if not database:get('bot:forward:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل فروارد #فعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل فروارد فعال شد ! ', 1, 'md')
          database:set('bot:forward:mute'..msg.chat_id_,true)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل فروارد از قبل #فعال است !', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل فروارد از قبل فعال است !', 1, 'md')
       end
 	end
 	end
@@ -2644,178 +2653,178 @@ local function gpro(extra, result, success)
 	local unmutept = {string.match(text, "^([Uu]nlock) (.*)$")} 
       if unmutept[2] == "all" or unmutept[2] == "gtime" then
 	  if database:get('bot:muteall'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل گروه [ همه چیز ] #غیرفعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل گروه [ همه چیز ] غیرفعال شد ! ', 1, 'md')
          database:del('bot:muteall'..msg.chat_id_)
 	 else 
-        send(msg.chat_id_, msg.id_, 1, '> قفل گروه [ همه چیز ] از قبل #غیرفعال است ! ', 1, 'md')
+        send(msg.chat_id_, msg.id_, 1, '® قفل گروه [ همه چیز ] از قبل غیرفعال است ! ', 1, 'md')
       end
 	  end
 	  if unmutept[2] == "text" then
 	  if database:get('bot:text:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل متن [ چت ] #غیرفعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل متن [ چت ] غیرفعال شد ! ', 1, 'md')
          database:del('bot:text:mute'..msg.chat_id_)
 	   else
-	   send(msg.chat_id_, msg.id_, 1, '> قفل متن [ چت ] از قبل #غیرفعال است ! ', 1, 'md')
+	   send(msg.chat_id_, msg.id_, 1, '® قفل متن [ چت ] از قبل غیرفعال است ! ', 1, 'md')
       end
 	  end
 	  if unmutept[2] == "photo" then
 	  if database:get('bot:photo:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل عکس #غیرفعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل عکس غیرفعال شد ! ', 1, 'md')
          database:del('bot:photo:mute'..msg.chat_id_)
 	  else 
-	     send(msg.chat_id_, msg.id_, 1, '> قفل عکس از قبل #غیرفعال است ! ', 1, 'md')
+	     send(msg.chat_id_, msg.id_, 1, '® قفل عکس از قبل غیرفعال است ! ', 1, 'md')
       end
 	  end
 	  if unmutept[2] == "spam" then
 	  if database:get('bot:spam:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل اسپم #غیرفعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل اسپم غیرفعال شد ! ', 1, 'md')
          database:del('bot:spam:mute'..msg.chat_id_)
 	  else 
-	     send(msg.chat_id_, msg.id_, 1, '> قفل اسپم از قبل #غیرفعال است ! ', 1, 'md')
+	     send(msg.chat_id_, msg.id_, 1, '® قفل اسپم از قبل غیرفعال است ! ', 1, 'md')
       end
 	  end
 	  if unmutept[2] == "video" then
 	  if database:get('bot:video:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل فیلم #غیرفعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل فیلم غیرفعال شد ! ', 1, 'md')
          database:del('bot:video:mute'..msg.chat_id_)
 	  else 
-	  send(msg.chat_id_, msg.id_, 1, '> قفل فیلم از قبل #غیرفعال است ! ', 1, 'md')
+	  send(msg.chat_id_, msg.id_, 1, '® قفل فیلم از قبل غیرفعال است ! ', 1, 'md')
       end
 	  end
 	  if unmutept[2] == "file" then
 	  if database:get('bot:document:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل فایل #غیرفعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل فایل غیرفعال شد ! ', 1, 'md')
          database:del('bot:document:mute'..msg.chat_id_)
 	  else 
-	  send(msg.chat_id_, msg.id_, 1, '> قفل فایل از قبل #غیرفعال است ! ', 1, 'md')
+	  send(msg.chat_id_, msg.id_, 1, '® قفل فایل از قبل غیرفعال است ! ', 1, 'md')
       end
 	  end
 	  if unmutept[2] == "inline" then
 	  if database:get('bot:inline:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل دکمه شیشه ایی #غیرفعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل دکمه شیشه ایی غیرفعال شد ! ', 1, 'md')
          database:del('bot:inline:mute'..msg.chat_id_)
 		else 
-		send(msg.chat_id_, msg.id_, 1, '> قفل دکمه شیشه ایی از قبل #غیرفعال است ! ', 1, 'md')
+		send(msg.chat_id_, msg.id_, 1, '® قفل دکمه شیشه ایی از قبل غیرفعال است ! ', 1, 'md')
       end
 	  end
 	  if unmutept[2] == "gif" then
 	  if database:get('bot:gifs:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل گیف #غیرفعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل گیف غیرفعال شد ! ', 1, 'md')
          database:del('bot:gifs:mute'..msg.chat_id_)
 		else 
-		send(msg.chat_id_, msg.id_, 1, '> قفل گیف از قبل #غیرفعال است ! ', 1, 'md')
+		send(msg.chat_id_, msg.id_, 1, '® قفل گیف از قبل غیرفعال است ! ', 1, 'md')
       end
 	  end
 	  if unmutept[2] == "music" then
 	  if database:get('bot:music:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل موزیک #غیرفعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل موزیک غیرفعال شد ! ', 1, 'md')
          database:del('bot:music:mute'..msg.chat_id_)
 	   else 
-	     send(msg.chat_id_, msg.id_, 1, '> قفل موزیک از قبل #غیرفعال است ! ', 1, 'md')
+	     send(msg.chat_id_, msg.id_, 1, '® قفل موزیک از قبل غیرفعال است ! ', 1, 'md')
       end
 	  end
 	  if unmutept[2] == "voice" then
 	  if database:get('bot:voice:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل ویس #غیرفعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل ویس غیرفعال شد ! ', 1, 'md')
          database:del('bot:voice:mute'..msg.chat_id_)
 	  else
-	     send(msg.chat_id_, msg.id_, 1, '> قفل ویس از قبل #غیرفعال است ! ', 1, 'md')
+	     send(msg.chat_id_, msg.id_, 1, '® قفل ویس از قبل غیرفعال است ! ', 1, 'md')
       end
 	  end
 	  if unmutept[2] == "links" then
 	  if database:get('bot:links:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل لینک #غیرفعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل لینک غیرفعال شد ! ', 1, 'md')
          database:del('bot:links:mute'..msg.chat_id_)
 		else
-		send(msg.chat_id_, msg.id_, 1, '> قفل لینک از قبل #غیرفعال است ! ', 1, 'md')
+		send(msg.chat_id_, msg.id_, 1, '® قفل لینک از قبل غیرفعال است ! ', 1, 'md')
       end
 	  end
 	  if unmutept[2] == "location" then
 	  if database:get('bot:location:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل موقعیت مکانی #غیرفعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل موقعیت مکانی غیرفعال شد ! ', 1, 'md')
          database:del('bot:location:mute'..msg.chat_id_)
         else
-	    send(msg.chat_id_, msg.id_, 1, '> قفل موقعیت مکانی از قبل #غیرفعال است ! ', 1, 'md')
+	    send(msg.chat_id_, msg.id_, 1, '® قفل موقعیت مکانی از قبل غیرفعال است ! ', 1, 'md')
       end
 	  end
 	  if unmutept[2] == "tag" then
 	  if database:get('tags:lock'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل تگ #غیرفعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل تگ غیرفعال شد ! ', 1, 'md')
          database:del('tags:lock'..msg.chat_id_)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل تگ از قبل #غیرفعال است ! ', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل تگ از قبل غیرفعال است ! ', 1, 'md')
       end
 	  end
 	  if unmutept[2] == "strict" then
 	  if database:get('bot:strict'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> حالت [ سختگیرانه ] #غیرفعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® حالت [ سختگیرانه ] غیرفعال شد ! ', 1, 'md')
          database:del('bot:strict'..msg.chat_id_)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> حالت [ سختگیرانه ] از قبل #غیرفعال است ! ', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® حالت [ سختگیرانه ] از قبل غیرفعال است ! ', 1, 'md')
       end
 	  end
 	  if unmutept[2] == "hashtag" then
 	  if database:get('bot:hashtag:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل هشتگ #غیرفعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل هشتگ غیرفعال شد ! ', 1, 'md')
          database:del('bot:hashtag:mute'..msg.chat_id_)
 		 else
-		send(msg.chat_id_, msg.id_, 1, '> قفل هشتگ از قبل #غیرفعال است ! ', 1, 'md')
+		send(msg.chat_id_, msg.id_, 1, '® قفل هشتگ از قبل غیرفعال است ! ', 1, 'md')
       end
 	  end
 	  if unmutept[2] == "contact" then
 	  if database:get('bot:contact:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل مخاطب #غیرفعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل مخاطب غیرفعال شد ! ', 1, 'md')
          database:del('bot:contact:mute'..msg.chat_id_)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '🔓 قفل #مخاطب فعال نیست !', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '🔓 قفل مخاطب فعال نیست !', 1, 'md')
       end
 	  end
 	  if unmutept[2] == "webpage" then
 	  if database:get('bot:webpage:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل صفحه اینترنتی #غیرفعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل صفحه اینترنتی غیرفعال شد ! ', 1, 'md')
          database:del('bot:webpage:mute'..msg.chat_id_)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل ارسال مخاطب از قبل #غیرفعال است ! ', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل ارسال مخاطب از قبل غیرفعال است ! ', 1, 'md')
       end
 	  end
 	  if unmutept[2] == "farsi" then
 	  if database:get('bot:arabic:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل نوشتار فارسی #غیرفعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل نوشتار فارسی غیرفعال شد ! ', 1, 'md')
          database:del('bot:arabic:mute'..msg.chat_id_)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل نوشتار فارسی از قبل #غیرفعال است ! ', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل نوشتار فارسی از قبل غیرفعال است ! ', 1, 'md')
       end
 	  end
 	  if unmutept[2] == "english" then
 	  if database:get('bot:english:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل نوشتار انگلیسی #غیرفعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل نوشتار انگلیسی غیرفعال شد ! ', 1, 'md')
          database:del('bot:english:mute'..msg.chat_id_)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل نوشتار انگلیسی از قبل #غیرفعال است ! ', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل نوشتار انگلیسی از قبل غیرفعال است ! ', 1, 'md')
       end
 	  end
 	  if unmutept[2] == "tgservice" then
 	  if database:get('bot:tgservice:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل سرویس تلگرام #غیرفعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل سرویس تلگرام غیرفعال شد ! ', 1, 'md')
          database:del('bot:tgservice:mute'..msg.chat_id_)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل سرویس تلگرام از قبل #غیرفعال است ! ', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل سرویس تلگرام از قبل غیرفعال است ! ', 1, 'md')
       end
 	  end
 	  if unmutept[2] == "sticker" then
 	  if database:get('bot:sticker:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل استیکر #غیرفعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل استیکر غیرفعال شد ! ', 1, 'md')
          database:del('bot:sticker:mute'..msg.chat_id_)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل استیکر از قبل #غیرفعال است ! ', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل استیکر از قبل غیرفعال است ! ', 1, 'md')
       end
 	  end
 	  if unmutept[2] == "fwd" then
 	  if database:get('bot:forward:mute'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '> قفل فروارد #غیرفعال شد ! ', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '® قفل فروارد غیرفعال شد ! ', 1, 'md')
          database:del('bot:forward:mute'..msg.chat_id_)
 		 else
-		 send(msg.chat_id_, msg.id_, 1, '> قفل فروارد از قبل #غیرفعال است ! ', 1, 'md')
+		 send(msg.chat_id_, msg.id_, 1, '® قفل فروارد از قبل غیرفعال است ! ', 1, 'md')
       end 
 	end
 	end
@@ -2871,39 +2880,39 @@ local function gpro(extra, result, success)
 	-----------------------------------------------------------------------------------------------
   	if text:match("^[Ss]ettings$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
 	if database:get('bot:muteall'..msg.chat_id_) then
-	mute_all = '#فعال'
+	mute_all = 'فعال'
 	else
-	mute_all = '#غیرفعال'
+	mute_all = 'غیرفعال'
 	end
 	------------
 	if database:get('bot:text:mute'..msg.chat_id_) then
-	mute_text = '#فعال'
+	mute_text = 'فعال'
 	else
-	mute_text = '#غیرفعال'
+	mute_text = 'غیرفعال'
 	end
 	------------
 	if database:get('bot:photo:mute'..msg.chat_id_) then
-	mute_photo = '#فعال'
+	mute_photo = 'فعال'
 	else
-	mute_photo = '#غیرفعال'
+	mute_photo = 'غیرفعال'
 	end
 	------------
 	if database:get('bot:video:mute'..msg.chat_id_) then
-	mute_video = '#فعال'
+	mute_video = 'فعال'
 	else
-	mute_video = '#غیرفعال'
+	mute_video = 'غیرفعال'
 	end
 	------------
 	if database:get('bot:gifs:mute'..msg.chat_id_) then
-	mute_gifs = '#فعال'
+	mute_gifs = 'فعال'
 	else
-	mute_gifs = '#غیرفعال'
+	mute_gifs = 'غیرفعال'
 	end
 	------------
 	if database:get('anti-flood:'..msg.chat_id_) then
-	mute_flood = '#فعال'
+	mute_flood = 'فعال'
 	else
-	mute_flood = '#غیرفعال'
+	mute_flood = 'غیرفعال'
 	end
 	------------
 	if not database:get('flood:max:'..msg.chat_id_) then
@@ -2933,135 +2942,135 @@ local function gpro(extra, result, success)
 	end
 	----------------------------------------------------
 	if database:get('bot:music:mute'..msg.chat_id_) then
-	mute_music = '#فعال'
+	mute_music = 'فعال'
 	else
-	mute_music = '#غیرفعال'
+	mute_music = 'غیرفعال'
 	end
 	------------
 	if database:get('bot:bots:mute'..msg.chat_id_) then
-	mute_bots = '#فعال'
+	mute_bots = 'فعال'
 	else
-	mute_bots = '#غیرفعال'
+	mute_bots = 'غیرفعال'
 	end
 	------------
 	if database:get('bot:inline:mute'..msg.chat_id_) then
-	mute_in = '#فعال'
+	mute_in = 'فعال'
 	else
-	mute_in = '#غیرفعال'
+	mute_in = 'غیرفعال'
 	end
 	------------
 	if database:get('bot:cmds'..msg.chat_id_) then
-	mute_cmd = '#فعال'
+	mute_cmd = 'فعال'
 	else
-	mute_cmd = '#غیرفعال'
+	mute_cmd = 'غیرفعال'
 	end
 	------------
 	if database:get('bot:voice:mute'..msg.chat_id_) then
-	mute_voice = '#فعال'
+	mute_voice = 'فعال'
 	else
-	mute_voice = '#غیرفعال'
+	mute_voice = 'غیرفعال'
 	end
 	------------
 	if database:get('editmsg'..msg.chat_id_) then
-	mute_edit = '#فعال'
+	mute_edit = 'فعال'
 	else
-	mute_edit = '#غیرفعال'
+	mute_edit = 'غیرفعال'
 	end
     ------------
 	if database:get('bot:links:mute'..msg.chat_id_) then
-	mute_links = '#فعال'
+	mute_links = 'فعال'
 	else
-	mute_links = '#غیرفعال'
+	mute_links = 'غیرفعال'
 	end
     ------------
 	if database:get('bot:pin:mute'..msg.chat_id_) then
-	lock_pin = '#فعال'
+	lock_pin = 'فعال'
 	else
-	lock_pin = '#غیرفعال'
+	lock_pin = 'غیرفعال'
 	end 
     ------------
 	if database:get('bot:sticker:mute'..msg.chat_id_) then
-	lock_sticker = '#فعال'
+	lock_sticker = 'فعال'
 	else
-	lock_sticker = '#غیرفعال'
+	lock_sticker = 'غیرفعال'
 	end
 	------------
     if database:get('bot:tgservice:mute'..msg.chat_id_) then
-	lock_tgservice = '#فعال'
+	lock_tgservice = 'فعال'
 	else
-	lock_tgservice = '#غیرفعال'
+	lock_tgservice = 'غیرفعال'
 	end
 	------------
     if database:get('bot:webpage:mute'..msg.chat_id_) then
-	lock_wp = '#فعال'
+	lock_wp = 'فعال'
 	else
-	lock_wp = '#غیرفعال'
+	lock_wp = 'غیرفعال'
 	end
 	------------
 	if database:get('bot:strict'..msg.chat_id_) then
-	strict = '#فعال'
+	strict = 'فعال'
 	else
-	strict = '#غیرفعال'
+	strict = 'غیرفعال'
 	end
 	------------
     if database:get('bot:hashtag:mute'..msg.chat_id_) then
-	lock_htag = '#فعال'
+	lock_htag = 'فعال'
 	else
-	lock_htag = '#غیرفعال'
+	lock_htag = 'غیرفعال'
 	end
 	------------
     if database:get('tags:lock'..msg.chat_id_) then
-	lock_tag = '#فعال'
+	lock_tag = 'فعال'
 	else
-	lock_tag = '#غیرفعال'
+	lock_tag = 'غیرفعال'
 	end
 	------------
     if database:get('bot:location:mute'..msg.chat_id_) then
-	lock_location = '#فعال'
+	lock_location = 'فعال'
 	else
-	lock_location = '#غیرفعال'
+	lock_location = 'غیرفعال'
 	end
 	------------
     if database:get('bot:contact:mute'..msg.chat_id_) then
-	lock_contact = '#فعال'
+	lock_contact = 'فعال'
 	else
-	lock_contact = '#غیرفعال'
+	lock_contact = 'غیرفعال'
 	end
 	------------
     if database:get('bot:english:mute'..msg.chat_id_) then
-	lock_english = '#فعال'
+	lock_english = 'فعال'
 	else
-	lock_english = '#غیرفعال'
+	lock_english = 'غیرفعال'
 	end
 	------------
     if database:get('bot:arabic:mute'..msg.chat_id_) then
-	lock_arabic = '#فعال'
+	lock_arabic = 'فعال'
 	else
-	lock_arabic = '#غیرفعال'
+	lock_arabic = 'غیرفعال'
 	end
 	------------
     if database:get('bot:forward:mute'..msg.chat_id_) then
-	lock_forward = '#فعال'
+	lock_forward = 'فعال'
 	else
-	lock_forward = '#غیرفعال'
+	lock_forward = 'غیرفعال'
 	end
 	------------
 	    if database:get('bot:document:mute'..msg.chat_id_) then
-	lock_file = '#فعال'
+	lock_file = 'فعال'
 	else
-	lock_file = '#غیرفعال'
+	lock_file = 'غیرفعال'
 	end
 	------------
 	    if database:get('bot:spam:mute'..msg.chat_id_) then
-	lock_spam = '#فعال'
+	lock_spam = 'فعال'
 	else
-	lock_spam = '#غیرفعال'
+	lock_spam = 'غیرفعال'
 	end
 	------------
 	if database:get("bot:welcome"..msg.chat_id_) then
-	send_welcome = '#فعال'
+	send_welcome = 'فعال'
 	else
-	send_welcome = '#غیرفعال'
+	send_welcome = 'غیرفعال'
 	end
 	------------
 	local ex = database:ttl("bot:charge:"..msg.chat_id_)
@@ -3072,39 +3081,39 @@ local function gpro(extra, result, success)
 			    end
  	------------
 	local TXT = "⚙ تنظیمات گروه :\n\n"
-	          .."> حالت سختگیرانه : "..strict.."\n"
-			  .."> حالت قفل کلی گروه : "..mute_all.."\n"
-			  .."> حالت عدم جواب : "..mute_cmd.."\n\n"
+	          .."® حالت سختگیرانه : "..strict.."\n"
+			  .."® حالت قفل کلی گروه : "..mute_all.."\n"
+			  .."® حالت عدم جواب : "..mute_cmd.."\n\n"
 	          .."🔃 قفل های اصلی :\n\n"
-			  .."> قفل اسپم : "..lock_spam.."\n"
-	          .."> قفل لینک : "..mute_links.."\n"
-	          .."️> قفل آدرس اینترنتی :  "..lock_wp.."\n"
-	          .."> قفل تگ : "..lock_tag.."\n"
-	          .."️> قفل هشتگ : "..lock_htag.."\n"
-			  .."> قفل فروارد : "..lock_forward.."\n"
-	          .."> قفل ورود ربات :  "..mute_bots.."\n"
-	          .."️> قفل ویرایش پیام :  "..mute_edit.."\n"
-	          .."️> قفل سنجاق پیام : "..lock_pin.."\n"
-	          .."> قفل دکمه شیشه ایی : "..mute_in.."\n"
-	          .."> قفل نوشتار فارسی :  "..lock_arabic.."\n"
-	          .."> قفل نوشتار انگلیسی : "..lock_english.."\n"
-	          .."️> قفل سرویس تلگرام : "..lock_tgservice.."\n"
-	          .."> قفل فلود : "..mute_flood.."\n"
-			  .."> وضعیت فلود : "..floodstatus.."\n"
-			  .."> حساسیت فلود : [ "..flood_m.." ]\n"
-	          .."️> محدوده زمان فلود : [ "..flood_t.." ]\n"
-			  .."️> حساسیت اسپم : [ "..spam_c.." ]\n\n"
+			  .."® قفل اسپم : "..lock_spam.."\n"
+	          .."® قفل لینک : "..mute_links.."\n"
+	          .."️® قفل آدرس اینترنتی :  "..lock_wp.."\n"
+	          .."® قفل تگ : "..lock_tag.."\n"
+	          .."️® قفل هشتگ : "..lock_htag.."\n"
+			  .."® قفل فروارد : "..lock_forward.."\n"
+	          .."® قفل ورود ربات :  "..mute_bots.."\n"
+	          .."️® قفل ویرایش پیام :  "..mute_edit.."\n"
+	          .."️® قفل سنجاق پیام : "..lock_pin.."\n"
+	          .."® قفل دکمه شیشه ایی : "..mute_in.."\n"
+	          .."® قفل نوشتار فارسی :  "..lock_arabic.."\n"
+	          .."® قفل نوشتار انگلیسی : "..lock_english.."\n"
+	          .."️® قفل سرویس تلگرام : "..lock_tgservice.."\n"
+	          .."® قفل فلود : "..mute_flood.."\n"
+			  .."® وضعیت فلود : "..floodstatus.."\n"
+			  .."® حساسیت فلود : [ "..flood_m.." ]\n"
+	          .."️® محدوده زمان فلود : [ "..flood_t.." ]\n"
+			  .."️® حساسیت اسپم : [ "..spam_c.." ]\n\n"
 	          .." 🔃قفل های رسانه :\n\n"
-	          .."> قفل متن [ چت ] : "..mute_text.."\n"
-	          .."> قفل عکس : "..mute_photo.."\n"
-	          .."> قفل فیلم : "..mute_video.."\n"
-	          .."> قفل گیف : "..mute_gifs.."\n"
-	          .."> قفل موزیک : "..mute_music.."\n"
-	          .."> قفل ویس : "..mute_voice.."\n"
-			  .."> قفل فایل : "..lock_file.."\n"
-			  .."> قفل استیکر : "..lock_sticker.."\n"
-			  .."> قفل ارسال مخاطب : "..lock_contact.."\n"
-			  .."️> قفل موقعیت مکانی : "..lock_location.."\n"
+	          .."® قفل متن [ چت ] : "..mute_text.."\n"
+	          .."® قفل عکس : "..mute_photo.."\n"
+	          .."® قفل فیلم : "..mute_video.."\n"
+	          .."® قفل گیف : "..mute_gifs.."\n"
+	          .."® قفل موزیک : "..mute_music.."\n"
+	          .."® قفل ویس : "..mute_voice.."\n"
+			  .."® قفل فایل : "..lock_file.."\n"
+			  .."® قفل استیکر : "..lock_sticker.."\n"
+			  .."® قفل ارسال مخاطب : "..lock_contact.."\n"
+			  .."️® قفل موقعیت مکانی : "..lock_location.."\n"
          send(msg.chat_id_, msg.id_, 1, TXT, 1, 'md')
     end
 	-----------------------------------------------------------------------------------------------
@@ -3312,7 +3321,7 @@ local function gpro(extra, result, success)
 	-----------------------------------------------------------------------------------------------
   	if text:match("^[#!/]del (%d+)$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
        local delnumb = {string.match(text, "^[#/!](del) (%d+)$")} 
-	   if tonumber(delnumb[2]) > 100 then
+	   if tonumber(delnumb[2]) ® 100 then
 			send(msg.chat_id_, msg.id_, 1, 'Error\nuse /del [1-100]', 1, 'md')
 else
 		local id = msg.id_ - 1
@@ -3320,7 +3329,7 @@ else
         for i= id - delnumb[2] , id do 
         deleteMessages(chat_id,{[0] = id})
 		end
-		send(msg.chat_id_, msg.id_, 1, '> '..delnumb[2]..' Last Msgs Has Been Removed.', 1, 'md')
+		send(msg.chat_id_, msg.id_, 1, '® '..delnumb[2]..' Last Msgs Has Been Removed.', 1, 'md')
     end
 	end
 	-----------------------------------------------------------------------------------------------
@@ -3370,21 +3379,21 @@ local pin_id = database:get('pinnedmsg'..msg.chat_id_)
 
 📖 راهنمای فعال سازی و غیرفعال سازی قفل های ربات :
 
-> حالت سختگیرانه :
+® حالت سختگیرانه :
 فعال سازی :
 Lock strict
 غیرفعال سازی :
 Unlock strict
 ➖➖
 
-> حالت قفل کلی گروه : 
+® حالت قفل کلی گروه : 
 فعال سازی :
 Lock all
 غیرفعال سازی :
 Unlock all
 
 ➖➖
-> حالت عدم جواب :
+® حالت عدم جواب :
 فعال سازی :
 Lock cmd
 غیر فعال سازی :
@@ -3394,150 +3403,150 @@ Unlock cmd
 
 🔃  قفل های اصلی :
 
-> قفل اسپم :
+® قفل اسپم :
 فعال سازی :
 Lock spam
 غیرفعال سازی :
 Unlock spam
-> قفل لینک :
+® قفل لینک :
 
 فعال سازی :
 Lock links
 غیرفعال سازی :
 Unlock links
-️> قفل آدرس اینترنتی : 
+️® قفل آدرس اینترنتی : 
 
 فعال سازی :
 Lock webpage
 غیرفعال سازی :
 Unlock webpage
-> قفل تگ : 
+® قفل تگ : 
 
 فعال سازی :
 Lock tag
 غیرفعال سازی :
 Unlock tag
-️> قفل هشتگ :
+️® قفل هشتگ :
 
 فعال سازی :
 Lock hashtag
 غیرفعال سازی :
 Unlock hashtag
-> قفل فروارد :
+® قفل فروارد :
 
 فعال سازی :
 Lock fwd
 غیرفعال سازی :
 Unlock fwd
-> قفل ورود ربات : 
+® قفل ورود ربات : 
 
 فعال سازی :
 Lock bots
 غیرفعال سازی :
 Unlock bots
-️> قفل ویرایش پیام : 
+️® قفل ویرایش پیام : 
 
 فعال سازی :
 Lock edit
 غیرفعال سازی :
 Unlock edit
-️> قفل سنجاق پیام : 
+️® قفل سنجاق پیام : 
 
 فعال سازی :
 Lock pin
 غیرفعال سازی :
 Unlock pin
-> قفل دکمه شیشه ایی :
+® قفل دکمه شیشه ایی :
 
 فعال سازی :
 Lock inline
 غیرفعال سازی :
 Unlock inline
-> قفل نوشتار فارسی : 
+® قفل نوشتار فارسی : 
 
 فعال سازی :
 Lock farsi
 غیرفعال سازی :
 Unlock farsi
-> قفل نوشتار انگلیسی : 
+® قفل نوشتار انگلیسی : 
 
 فعال سازی :
 Lock english
 غیرفعال سازی :
 Unlock english
-️> قفل سرویس تلگرام : 
+️® قفل سرویس تلگرام : 
 
 فعال سازی :
 Lock tgservice
 غیرفعال سازی :
 Unlock tgservice
-> قفل فلود :
+® قفل فلود :
 
 فعال سازی :
 Lock flood
 غیرفعال سازی :
 Unlock flood
-> حساسیت فلود : 
+® حساسیت فلود : 
 
 Setflood [ 2 - To Up ]
 
-️> محدوده زمان فلود :
+️® محدوده زمان فلود :
 
 Setfloodtime [ 2 - To Up ]
 
-️> حساسیت اسپم :
+️® حساسیت اسپم :
 
 Setspam [ 40 - To Up ]
 
 
 🔃قفل های رسانه :
 
-> قفل متن [ چت ] : 
+® قفل متن [ چت ] : 
 فعال سازی :
 Lock text
 غیرفعال سازی :
 Unlock text
-> قفل عکس : 
+® قفل عکس : 
 فعال سازی :
 Lock photo
 غیرفعال سازی :
 Unlock photo
-> قفل فیلم : 
+® قفل فیلم : 
 فعال سازی :
 Lock video
 غیرفعال سازی :
 Unlock video
-> قفل گیف : 
+® قفل گیف : 
 فعال سازی :
 Lock gif
 غیرفعال سازی :
 Unlock gif
-> قفل موزیک : 
+® قفل موزیک : 
 فعال سازی :
 Lock music
 غیرفعال سازی :
 Unlock music
-> قفل ویس : 
+® قفل ویس : 
 فعال سازی :
 Lock voice
 غیرفعال سازی :
 Unlock voice
-> قفل فایل : 
+® قفل فایل : 
 فعال سازی :
 Lock file
 غیرفعال سازی :
 Unlock file
-> قفل استیکر : 
+® قفل استیکر : 
 فعال سازی :
 Lock sticker
 غیرفعال سازی :
 Unlock sticker
-> قفل ارسال مخاطب :
+® قفل ارسال مخاطب :
 فعال سازی :
 Lock contact
 غیرفعال سازی :
  Unlock contact
-️> قفل موقعیت مکانی : 
+️® قفل موقعیت مکانی : 
 فعال سازی :
 Lock locations
 غیرفعال سازی :
